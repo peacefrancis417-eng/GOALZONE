@@ -4,110 +4,476 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoalZone | Football Hub</title>
+  <meta name="theme-color" content="#0b1421">
+  <title>GoalZone | The Football Culture</title>
+
   <style>
+    :root {
+      --bg: #0b1421;
+      --panel: #132235;
+      --green: #19c784;
+      --gold: #e9bd68;
+      --white: #f5f7fa;
+      --muted: #9aabbd;
+      --line: #29394c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101820;
-      color: white;
-    }
-    header {
-      background: #17252f;
-      padding: 20px;
-      border-bottom: 3px solid #22c55e;
-    }
-    header h1 {
-      margin: 0;
-      color: #22c55e;
-    }
-    nav {
-      padding: 14px 20px;
-      background: #20313d;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-right: 15px;
-    }
-    main {
-      padding: 20px;
-    }
-    .match {
-      background: #20313d;
-      padding: 18px;
-      margin: 14px 0;
-      border-radius: 10px;
-      border-left: 4px solid #22c55e;
-    }
-    .match h3 {
-      margin-top: 0;
-    }
-    .note {
-      color: #cbd5e1;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--white);
       line-height: 1.6;
     }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 100% - 36px);
+      margin: auto;
+    }
+
+    header {
+      background: #0d1928;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .brand span { color: var(--green); }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: #d4dce5;
+    }
+
+    nav a:hover { color: var(--green); }
+
+    .hero {
+      padding: 58px 0 50px;
+      background:
+        radial-gradient(ellipse at 85% 15%, #174b3d 0%, transparent 38%),
+        linear-gradient(135deg, #142b37, #0b1421 72%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 8vw, 66px);
+      letter-spacing: -2px;
+      line-height: 1.06;
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span { color: var(--green); }
+
+    .hero p {
+      color: #c0ccd7;
+      font-size: 15px;
+      max-width: 520px;
+      margin-bottom: 27px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--green);
+      color: #071b14;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px 19px;
+      border-radius: 5px;
+    }
+
+    .button:hover { background: #54e6a9; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 40px;
+      border-top: 1px solid #3b4b58;
+      padding-top: 20px;
+      max-width: 520px;
+      gap: 10px;
+    }
+
+    .stats strong {
+      display: block;
+      font-size: 19px;
+      color: var(--white);
+    }
+
+    .stats span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    section { padding: 38px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 19px;
+    }
+
+    .section-head h2 {
+      font-size: 23px;
+      letter-spacing: -.5px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section-head a {
+      color: var(--green);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
+    }
+
+    .match {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 19px;
+      border-radius: 9px;
+    }
+
+    .match-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 19px;
+    }
+
+    .badge {
+      color: var(--gold);
+      background: #3a3022;
+      padding: 3px 7px;
+      border-radius: 3px;
+    }
+
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .versus {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .match-foot {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 11px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .notice {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 13px;
+    }
+
+    .feature {
+      background: linear-gradient(110deg, #183d34, #142235 72%);
+      border: 1px solid #285747;
+      padding: 26px;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    .feature .eyebrow { margin-bottom: 9px; }
+
+    .feature h3 {
+      font-size: 23px;
+      margin-bottom: 9px;
+    }
+
+    .feature p {
+      color: #c0d0d0;
+      font-size: 14px;
+      max-width: 620px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .news-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 21px;
+    }
+
+    .news-card .category {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .news-card h3 {
+      font-size: 18px;
+      line-height: 1.35;
+      margin: 10px 0;
+    }
+
+    .news-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .about {
+      background: #101e2e;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about p {
+      color: #bdc9d5;
+      font-size: 14px;
+      max-width: 680px;
+      margin-top: 10px;
+    }
+
     footer {
-      padding: 20px;
-      text-align: center;
-      color: #cbd5e1;
+      padding: 27px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 520px) {
+      .container { width: calc(100% - 28px); }
+      .nav { min-height: 70px; }
+      .brand { font-size: 22px; }
+      nav { gap: 11px; font-size: 11px; }
+      .hero { padding: 43px 0 35px; }
+      .hero h1 { letter-spacing: -1.5px; }
+      .match-grid, .news-grid { grid-template-columns: 1fr; }
+      .section-head h2 { font-size: 21px; }
+      .feature { padding: 21px; }
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <h1>⚽ GoalZone</h1>
-    <p>Your home for the beautiful game.</p>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        Goal<span>Zone</span>
+        <small>THE FOOTBALL CULTURE</small>
+      </a>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#matches">Matches</a>
+        <a href="#news">News</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#matches">Matches</a>
-    <a href="#news">News</a>
-  </nav>
+  <main>
+    <div class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Passion. Pride. Football.</div>
+        <h1>The game is more than <span>90 minutes.</span></h1>
+        <p>
+          Your destination for football stories, match previews,
+          fixtures and the moments that bring fans together.
+        </p>
+        <a class="button" href="#matches">Explore Match Centre ↗</a>
 
-  <main id="home">
-    <h2>Welcome to GoalZone</h2>
-    <p class="note">
-      Your destination for football fixtures, results,
-      news and official match-watching information.
-    </p>
+        <div class="stats">
+          <div>
+            <strong>Global</strong>
+            <span>Football coverage</span>
+          </div>
+          <div>
+            <strong>Every day</strong>
+            <span>Stories & updates</span>
+          </div>
+          <div>
+            <strong>One game</strong>
+            <span>Millions of fans</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section id="matches">
-      <h2>⚽ Match Centre</h2>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Match Centre</h2>
+            <p>Fixtures worth following</p>
+          </div>
+          <a href="#news">Latest stories ↗</a>
+        </div>
 
-      <div class="match">
-        <h3>Today's Fixtures</h3>
-        <p class="note">
-          Upcoming matches and kick-off times will appear here.
-        </p>
-      </div>
+        <div class="match-grid">
+          <article class="match">
+            <div class="match-top">
+              <span>Match preview</span>
+              <span class="badge">Upcoming</span>
+            </div>
+            <div class="teams">
+              <span>Home Team</span>
+              <span class="versus">VS</span>
+              <span>Away Team</span>
+            </div>
+            <div class="match-foot">Date and kickoff time to be confirmed</div>
+          </article>
 
-      <div class="match">
-        <h3>Live Scores</h3>
-        <p class="note">
-          Match scores will be added in a future update.
-        </p>
-      </div>
+          <article class="match">
+            <div class="match-top">
+              <span>Match preview</span>
+              <span class="badge">Upcoming</span>
+            </div>
+            <div class="teams">
+              <span>Team A</span>
+              <span class="versus">VS</span>
+              <span>Team B</span>
+            </div>
+            <div class="match-foot">Date and kickoff time to be confirmed</div>
+          </article>
+        </div>
 
-      <div class="match">
-        <h3>Watch Football</h3>
-        <p class="note">
-          Find official broadcasters and authorised streaming links.
+        <p class="notice">
+          Sample fixtures shown. Verified match details will be added later.
         </p>
+
+        <div class="feature">
+          <div class="eyebrow">Inside the game</div>
+          <h3>Football is a culture of its own.</h3>
+          <p>
+            From local pitches to the biggest stadiums, GoalZone
+            celebrates the people, rivalries and stories behind the game.
+          </p>
+        </div>
       </div>
     </section>
 
     <section id="news">
-      <h2>Football News</h2>
-      <p class="note">
-        Football stories, team updates and match analysis coming soon.
-      </p>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>From the World of Football</h2>
+            <p>Stories, opinions and analysis</p>
+          </div>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="category">Analysis</div>
+            <h3>What makes a great football team?</h3>
+            <p>
+              Explore the importance of tactics, teamwork,
+              discipline and the mentality to win.
+            </p>
+          </article>
+
+          <article class="news-card">
+            <div class="category">Fan Culture</div>
+            <h3>The supporters behind the beautiful game</h3>
+            <p>
+              Discover how supporters, chants and traditions
+              make football more than just a sport.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container">
+        <div class="eyebrow">Welcome to GoalZone</div>
+        <h2>Made for the love of football.</h2>
+        <p>
+          We are building a home for fans who want to stay connected
+          to the game through engaging stories, useful match information
+          and the culture that makes football special.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 GoalZone. Made for football fans.</p>
+    <div class="container footer-inner">
+      <span>© 2026 GoalZone</span>
+      <span>Passion brings us together.</span>
+    </div>
   </footer>
+
 </body>
 </html>
