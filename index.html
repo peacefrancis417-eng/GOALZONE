@@ -4,531 +4,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1421">
-  <title>GoalZone | The Football Culture</title>
-
+  <meta name="theme-color" content="#071522">
+  <title>GoalZone | Football Central</title>
   <style>
     :root {
-      --bg: #0b1421;
-      --panel: #132235;
-      --green: #19c784;
-      --gold: #e9bd68;
-      --white: #f5f7fa;
-      --muted: #9aabbd;
-      --line: #29394c;
+      --bg: #071522;
+      --panel: #102536;
+      --green: #20df91;
+      --gold: #f4c95d;
+      --text: #f5f8fb;
+      --muted: #a8b7c5;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      font-family: Arial, sans-serif;
       background: var(--bg);
-      color: var(--white);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1120px, 100% - 36px);
-      margin: auto;
-    }
-
     header {
-      background: #0d1928;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-    }
-
-    .nav {
-      min-height: 76px;
+      padding: 18px 6%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      gap: 16px;
+      background: #0b1d2b;
+      border-bottom: 1px solid #20384a;
     }
 
-    .brand {
+    .logo {
       font-size: 25px;
       font-weight: 900;
-      letter-spacing: -1px;
+      color: var(--green);
     }
 
-    .brand span { color: var(--green); }
-
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: 3px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
+    .logo span { color: var(--gold); }
 
     nav {
       display: flex;
       gap: 16px;
-      font-size: 12px;
-      color: #d4dce5;
+      flex-wrap: wrap;
     }
 
-    nav a:hover { color: var(--green); }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
 
     .hero {
-      padding: 58px 0 50px;
-      background:
-        radial-gradient(ellipse at 85% 15%, #174b3d 0%, transparent 38%),
-        linear-gradient(135deg, #142b37, #0b1421 72%);
-      border-bottom: 1px solid var(--line);
+      padding: 65px 6%;
+      background: linear-gradient(120deg, #102e3d, #071522);
     }
 
-    .eyebrow {
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      margin-bottom: 17px;
+    .tag {
+      color: var(--green);
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 12px;
     }
 
-    .hero h1 {
-      font-size: clamp(38px, 8vw, 66px);
-      letter-spacing: -2px;
-      line-height: 1.06;
-      max-width: 720px;
-      margin-bottom: 18px;
+    h1 {
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 1.1;
+      margin: 15px 0;
     }
 
-    .hero h1 span { color: var(--green); }
+    h1 span { color: var(--green); }
 
     .hero p {
-      color: #c0ccd7;
-      font-size: 15px;
-      max-width: 520px;
-      margin-bottom: 27px;
+      color: var(--muted);
+      max-width: 600px;
     }
 
     .button {
       display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
       background: var(--green);
-      color: #071b14;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 12px 19px;
-      border-radius: 5px;
+      color: #061a14;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 7px;
     }
 
-    .button:hover { background: #54e6a9; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 40px;
-      border-top: 1px solid #3b4b58;
-      padding-top: 20px;
-      max-width: 520px;
-      gap: 10px;
+    main {
+      max-width: 1100px;
+      padding: 30px 18px;
+      margin: auto;
     }
 
-    .stats strong {
-      display: block;
-      font-size: 19px;
-      color: var(--white);
-    }
+    section { margin-bottom: 45px; }
 
-    .stats span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    section { padding: 38px 0; }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 19px;
-    }
-
-    .section-head h2 {
-      font-size: 23px;
-      letter-spacing: -.5px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .section-head a {
-      color: var(--green);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .match-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 13px;
-    }
-
-    .match {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      padding: 19px;
-      border-radius: 9px;
-    }
-
-    .match-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 19px;
-    }
-
-    .badge {
-      color: var(--gold);
-      background: #3a3022;
-      padding: 3px 7px;
-      border-radius: 3px;
-    }
-
-    .teams {
+    .section-heading {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 700;
+      gap: 12px;
+      border-bottom: 1px solid #294052;
+      margin-bottom: 18px;
     }
 
-    .versus {
+    h2 { font-size: 23px; }
+
+    .live-label {
       color: var(--green);
-      font-size: 11px;
-      font-weight: 900;
+      font-size: 12px;
+      font-weight: bold;
     }
 
-    .match-foot {
-      border-top: 1px solid var(--line);
-      margin-top: 18px;
-      padding-top: 11px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .notice {
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 13px;
-    }
-
-    .feature {
-      background: linear-gradient(110deg, #183d34, #142235 72%);
-      border: 1px solid #285747;
-      padding: 26px;
-      border-radius: 10px;
-      margin-top: 12px;
-    }
-
-    .feature .eyebrow { margin-bottom: 9px; }
-
-    .feature h3 {
-      font-size: 23px;
-      margin-bottom: 9px;
-    }
-
-    .feature p {
-      color: #c0d0d0;
-      font-size: 14px;
-      max-width: 620px;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .news-card {
+    .panel {
       background: var(--panel);
-      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #20384a;
+    }
+
+    .match {
+      background: #0a1c2a;
       border-radius: 9px;
-      padding: 21px;
+      padding: 15px;
+      margin: 12px 0;
+      border: 1px solid #20384a;
     }
 
-    .news-card .category {
-      color: var(--green);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .news-card h3 {
+    .match-score {
       font-size: 18px;
-      line-height: 1.35;
-      margin: 10px 0;
+      font-weight: bold;
+      color: var(--gold);
+      margin: 5px 0;
     }
 
-    .news-card p {
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .story {
+      background: var(--panel);
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid #20384a;
+    }
+
+    .story .symbol {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .story h3 { color: var(--gold); }
+
+    footer {
+      padding: 28px 18px;
+      text-align: center;
       color: var(--muted);
+      background: #0b1d2b;
       font-size: 13px;
     }
 
-    .about {
-      background: #101e2e;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .about p {
-      color: #bdc9d5;
-      font-size: 14px;
-      max-width: 680px;
-      margin-top: 10px;
-    }
-
-    footer {
-      padding: 27px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 520px) {
-      .container { width: calc(100% - 28px); }
-      .nav { min-height: 70px; }
-      .brand { font-size: 22px; }
-      nav { gap: 11px; font-size: 11px; }
-      .hero { padding: 43px 0 35px; }
-      .hero h1 { letter-spacing: -1.5px; }
-      .match-grid, .news-grid { grid-template-columns: 1fr; }
-      .section-head h2 { font-size: 21px; }
-      .feature { padding: 21px; }
+    @media (max-width: 500px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 45px; padding-bottom: 45px; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        Goal<span>Zone</span>
-        <small>THE FOOTBALL CULTURE</small>
-      </a>
-
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#matches">Matches</a>
-        <a href="#news">News</a>
-      </nav>
-    </div>
+    <div class="logo">GOAL<span>ZONE</span> ⚽</div>
+    <nav>
+      <a href="#matches">Matches</a>
+      <a href="#news">Football News</a>
+      <a href="#culture">Culture</a>
+    </nav>
   </header>
 
+  <div class="hero">
+    <div class="tag">YOUR GAME. YOUR PASSION.</div>
+    <h1>Football Lives<br>Here at <span>GoalZone.</span></h1>
+    <p>
+      Follow the action, check live scores and explore the stories
+      that make football more than just a game.
+    </p>
+    <a class="button" href="#matches">Explore Match Centre ↓</a>
+  </div>
+
   <main>
-    <div class="hero" id="home">
-      <div class="container">
-        <div class="eyebrow">Passion. Pride. Football.</div>
-        <h1>The game is more than <span>90 minutes.</span></h1>
-        <p>
-          Your destination for football stories, match previews,
-          fixtures and the moments that bring fans together.
-        </p>
-        <a class="button" href="#matches">Explore Match Centre ↗</a>
-
-        <div class="stats">
-          <div>
-            <strong>Global</strong>
-            <span>Football coverage</span>
-          </div>
-          <div>
-            <strong>Every day</strong>
-            <span>Stories & updates</span>
-          </div>
-          <div>
-            <strong>One game</strong>
-            <span>Millions of fans</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section id="matches">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Match Centre</h2>
-            <p>Fixtures worth following</p>
-          </div>
-          <a href="#news">Latest stories ↗</a>
-        </div>
+      <div class="section-heading">
+        <h2>Match Centre</h2>
+        <span class="live-label">● LIVE SCORES</span>
+      </div>
 
-        <div class="match-grid">
-          <article class="match">
-            <div class="match-top">
-              <span>Match preview</span>
-              <span class="badge">Upcoming</span>
-            </div>
-            <div class="teams">
-              <span>Home Team</span>
-              <span class="versus">VS</span>
-              <span>Away Team</span>
-            </div>
-            <div class="match-foot">Date and kickoff time to be confirmed</div>
-          </article>
-
-          <article class="match">
-            <div class="match-top">
-              <span>Match preview</span>
-              <span class="badge">Upcoming</span>
-            </div>
-            <div class="teams">
-              <span>Team A</span>
-              <span class="versus">VS</span>
-              <span>Team B</span>
-            </div>
-            <div class="match-foot">Date and kickoff time to be confirmed</div>
-          </article>
-        </div>
-
-        <p class="notice">
-          Sample fixtures shown. Verified match details will be added later.
+      <div class="panel">
+        <p class="muted">
+          Live match information. Scores update automatically when available.
         </p>
-
-        <div class="feature">
-          <div class="eyebrow">Inside the game</div>
-          <h3>Football is a culture of its own.</h3>
-          <p>
-            From local pitches to the biggest stadiums, GoalZone
-            celebrates the people, rivalries and stories behind the game.
-          </p>
+        <div id="live-scores" aria-live="polite">
+          Loading live scores...
         </div>
+        <p id="score-status" class="muted">
+          Connecting to the live score service...
+        </p>
       </div>
     </section>
 
     <section id="news">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>From the World of Football</h2>
-            <p>Stories, opinions and analysis</p>
-          </div>
-        </div>
+      <div class="section-heading">
+        <h2>Inside Football</h2>
+      </div>
 
-        <div class="news-grid">
-          <article class="news-card">
-            <div class="category">Analysis</div>
-            <h3>What makes a great football team?</h3>
-            <p>
-              Explore the importance of tactics, teamwork,
-              discipline and the mentality to win.
-            </p>
-          </article>
+      <div class="grid">
+        <article class="story">
+          <div class="symbol">📰</div>
+          <h3>Football Headlines</h3>
+          <p class="muted">
+            Keep up with the teams, players and stories making the news.
+          </p>
+        </article>
 
-          <article class="news-card">
-            <div class="category">Fan Culture</div>
-            <h3>The supporters behind the beautiful game</h3>
-            <p>
-              Discover how supporters, chants and traditions
-              make football more than just a sport.
-            </p>
-          </article>
-        </div>
+        <article class="story">
+          <div class="symbol">🏆</div>
+          <h3>Matchday Spotlight</h3>
+          <p class="muted">
+            Big games, unforgettable moments and the battles worth watching.
+          </p>
+        </article>
+
+        <article class="story">
+          <div class="symbol">🌍</div>
+          <h3>World Football</h3>
+          <p class="muted">
+            Discover the competitions and clubs followed by fans worldwide.
+          </p>
+        </article>
       </div>
     </section>
 
-    <section class="about">
-      <div class="container">
-        <div class="eyebrow">Welcome to GoalZone</div>
-        <h2>Made for the love of football.</h2>
+    <section id="culture">
+      <div class="section-heading">
+        <h2>More Than Football</h2>
+      </div>
+
+      <div class="panel">
+        <h3 style="color:var(--green)">The Game. The Fans. The Culture.</h3>
         <p>
-          We are building a home for fans who want to stay connected
-          to the game through engaging stories, useful match information
-          and the culture that makes football special.
+          From the streets of Lagos to the biggest stadiums in the world,
+          football connects people, creates memories and inspires a new
+          generation. GoalZone celebrates the passion behind the beautiful game.
         </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <span>© 2026 GoalZone</span>
-      <span>Passion brings us together.</span>
-    </div>
+    <div class="logo">GOAL<span>ZONE</span></div>
+    <p>Football never stops. Neither does the passion.</p>
+    <p>© 2026 GoalZone. All rights reserved.</p>
   </footer>
 
+  <script>
+    const LIVE_URL =
+      "https://goalzone.peacefrancis417.workers.dev/live";
+
+    async function updateGoalZoneScores() {
+      const display = document.getElementById("live-scores");
+      const status = document.getElementById("score-status");
+
+      try {
+        const response = await fetch(LIVE_URL);
+
+        if (!response.ok) {
+          throw new Error("Live score service returned an error.");
+        }
+
+        const data = await response.json();
+
+        if (data.errors && Object.keys(data.errors).length > 0) {
+          throw new Error("The football API reported an error.");
+        }
+
+        if (!Array.isArray(data.response)) {
+          throw new Error("Unexpected live score data.");
+        }
+
+        if (data.response.length === 0) {
+          display.innerHTML =
+            '<p class="muted">No matches are live right now. Check again later.</p>';
+        } else {
+          display.innerHTML = data.response.map(match => {
+            const home = match.teams.home.name;
+            const away = match.teams.away.name;
+            const homeGoals = match.goals.home ?? 0;
+            const awayGoals = match.goals.away ?? 0;
+            const elapsed = match.fixture.status.elapsed;
+            const matchStatus = match.fixture.status.short;
+
+            return `
+              <article class="match">
+                <div>${home}</div>
+                <div class="match-score">
+                  ${homeGoals} - ${awayGoals}
+                </div>
+                <div>${away}</div>
+                <p class="muted">
+                  ${elapsed !== null ? elapsed + "'" : matchStatus}
+                  · ${match.fixture.status.long}
+                </p>
+              </article>
+            `;
+          }).join("");
+        }
+
+        status.textContent =
+          "Last updated: " + new Date().toLocaleTimeString();
+      } catch (error) {
+        status.textContent =
+          "Live scores could not load. Please try again later.";
+        console.error("GoalZone live score error:", error);
+      }
+    }
+
+    updateGoalZoneScores();
+    setInterval(updateGoalZoneScores, 15 * 60 * 1000);
+  </script>
 </body>
 </html>
-<script>
-async function updateGoalZoneScores() {
-  const url = "https://goalzone.peacefrancis417.workers.dev/live";
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const section = document.querySelector(
-      "#match-centre, #match-center, .match-centre, .match-center"
-    );
-
-    if (!section) {
-      console.log("Match Centre section not found.");
-      return;
-    }
-
-    let display = section.querySelector("#live-scores");
-    if (!display) {
-      display = document.createElement("div");
-      display.id = "live-scores";
-      section.appendChild(display);
-    }
-
-    if (!data.response || data.response.length === 0) {
-      display.innerHTML = "<p>No matches are live right now.</p>";
-      return;
-    }
-
-    display.innerHTML = "<h3>🔴 Live Scores</h3>" +
-      data.response.map(match => {
-        const home = match.teams.home.name;
-        const away = match.teams.away.name;
-        const homeGoals = match.goals.home ?? 0;
-        const awayGoals = match.goals.away ?? 0;
-        const minute = match.fixture.status.elapsed;
-        const status = match.fixture.status.long;
-
-        return `
-          <div style="background:#142536;padding:16px;margin:12px 0;
-          border-radius:12px;color:white;">
-            <div>${home} <strong>${homeGoals} - ${awayGoals}</strong> ${away}</div>
-            <small>${minute ? minute + "'" : status} · ${status}</small>
-          </div>`;
-      }).join("");
-  } catch (error) {
-    console.error("Could not load live scores", error);
-  }
-}
-
-updateGoalZoneScores();
-setInterval(updateGoalZoneScores, 60000);
-</script>
-</body>
-
