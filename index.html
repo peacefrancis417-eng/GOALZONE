@@ -477,3 +477,58 @@
 
 </body>
 </html>
+<script>
+async function updateGoalZoneScores() {
+  const url = "https://goalzone.peacefrancis417.workers.dev/live";
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const section = document.querySelector(
+      "#match-centre, #match-center, .match-centre, .match-center"
+    );
+
+    if (!section) {
+      console.log("Match Centre section not found.");
+      return;
+    }
+
+    let display = section.querySelector("#live-scores");
+    if (!display) {
+      display = document.createElement("div");
+      display.id = "live-scores";
+      section.appendChild(display);
+    }
+
+    if (!data.response || data.response.length === 0) {
+      display.innerHTML = "<p>No matches are live right now.</p>";
+      return;
+    }
+
+    display.innerHTML = "<h3>🔴 Live Scores</h3>" +
+      data.response.map(match => {
+        const home = match.teams.home.name;
+        const away = match.teams.away.name;
+        const homeGoals = match.goals.home ?? 0;
+        const awayGoals = match.goals.away ?? 0;
+        const minute = match.fixture.status.elapsed;
+        const status = match.fixture.status.long;
+
+        return `
+          <div style="background:#142536;padding:16px;margin:12px 0;
+          border-radius:12px;color:white;">
+            <div>${home} <strong>${homeGoals} - ${awayGoals}</strong> ${away}</div>
+            <small>${minute ? minute + "'" : status} · ${status}</small>
+          </div>`;
+      }).join("");
+  } catch (error) {
+    console.error("Could not load live scores", error);
+  }
+}
+
+updateGoalZoneScores();
+setInterval(updateGoalZoneScores, 60000);
+</script>
+</body>
+
